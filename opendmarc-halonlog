@@ -54,10 +54,10 @@ while (<STDIN>)
 	{
 		next if $key !~ m/^dkim:(.+)$/s;
 		print "dkim ", $1, " ";
-		print '0' if $result{$key} eq 'pass';
-		print '2' if $result{$key} eq 'softfail';
-		print '4' if $result{$key} eq 'tempfail';
-		print '5' if $result{$key} eq 'permfail';
+		print $1,' 0' if $result{$key} eq 'pass';
+		print $1,' 2' if $result{$key} eq 'softfail';
+		print $1,' 4' if $result{$key} eq 'tempfail';
+		print $1,' 5' if $result{$key} eq 'permfail';
 		print "\n";
 	}
 	print "align_spf ";
